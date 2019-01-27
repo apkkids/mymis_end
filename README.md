@@ -1,6 +1,8 @@
 # The server side of mymis system.
 
 >代码更新中
+系列说明文章见：
+1.技术架构：https://zhuanlan.zhihu.com/p/55213181
 
 ## 内容提要
 如何运行代码：
