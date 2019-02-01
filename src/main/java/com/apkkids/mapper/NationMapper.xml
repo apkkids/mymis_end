@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apkkids.mapper.NationMapper">
+    <resultMap id="ResultMap" type="com.apkkids.bean.Nation">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="gmt_created" property="gmt_created"/>
+        <result column="gmt_modifed" property="gmt_modifed"/>
+    </resultMap>
+    <select id="getAllNation" resultMap="ResultMap">
+        SELECT * FROM nation_dic;
+    </select>
+    <insert id="addNation" parameterType="com.apkkids.bean.Nation">
+        INSERT INTO nation_dic (name,gmt_created,gmt_modified) VALUES
+        (#{nation.name},#{nation.gmt_created},#{nation.gmt_modified});
+    </insert>
+</mapper>
