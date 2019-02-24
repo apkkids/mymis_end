@@ -17,7 +17,7 @@ public interface NationMapper {
 
     Long addNation(@Param("nation") Nation nation);
 
-    Long deleteNation(@Param("ids") String[] ids);
+    Long deleteNations(@Param("ids") String[] ids);
 
     Long updateNation(@Param("nation") Nation nation);
 }

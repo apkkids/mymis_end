@@ -27,9 +27,7 @@ public class Nation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Nation nation = (Nation) o;
-
         return name.equals(nation.name);
     }
 

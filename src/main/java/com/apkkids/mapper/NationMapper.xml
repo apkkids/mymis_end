@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.apkkids.mapper.NationMapper">
     <resultMap id="ResultMap" type="com.apkkids.bean.Nation">
-        <id column="id" property="id" />
+        <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="gmt_created" property="gmt_created"/>
         <result column="gmt_modifed" property="gmt_modifed"/>
@@ -16,4 +16,22 @@
         INSERT INTO nation_dic (name,gmt_created,gmt_modified) VALUES
         (#{nation.name},#{nation.gmt_created},#{nation.gmt_modified});
     </insert>
+    <!--删除多个记录的方法-->
+    <delete id="deleteNations" parameterType="int">
+        delete from nation_dic where id in
+        <foreach collection="ids" item="idItem" open="(" separator="," close=")">
+            #{idItem}
+        </foreach>
+    </delete>
+    <update id="updateNation" parameterType="com.apkkids.bean.Nation">
+        UPDATE nation_dic
+        <set>
+            name = #{nation.name,jdbcType=VARCHAR},
+            gmt_created =#{nation.gmt_created,jdbcType=DATE},
+            <if test="nation.gmt_modified != null">
+                gmt_modified =#{nation.gmt_modified,jdbcType=DATE},
+            </if>
+        </set>
+        WHERE id=#{nation.id,jdbcType = BIGINT};
+    </update>
 </mapper>
