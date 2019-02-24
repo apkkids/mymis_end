@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apkkids.mapper.JobLevelMapper">
+    <resultMap id="ResultMap" type="com.apkkids.bean.JobLevel">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="titlelevel" property="titleLevel"/>
+        <result column="is_enabled" property="is_enabled" jdbcType="TINYINT"/>
+        <result column="gmt_created" property="gmt_created"/>
+        <result column="gmt_modifed" property="gmt_modifed"/>
+    </resultMap>
+    <select id="getAllJobLevels" resultMap="ResultMap">
+        SELECT * FROM joblevel_dic;
+    </select>
+    <insert id="addJobLevel" parameterType="com.apkkids.bean.JobLevel">
+        INSERT INTO joblevel_dic (name,titlelevel,gmt_created,gmt_modified,is_enabled) VALUES
+        (#{jobLevel.name},#{jobLevel.titleLevel},#{jobLevel.gmt_created},#{jobLevel.gmt_modified},#{jobLevel.is_enabled});
+    </insert>
+    <!--删除多个记录的方法-->
+    <delete id="deleteJobLevels" parameterType="int">
+        delete from joblevel_dic where id in
+        <foreach collection="ids" item="idItem" open="(" separator="," close=")">
+            #{idItem}
+        </foreach>
+    </delete>
+    <update id="updateJobLevel" parameterType="com.apkkids.bean.JobLevel">
+        UPDATE joblevel_dic
+        <set>
+            name = #{jobLevel.name,jdbcType=VARCHAR},
+            titlelevel = #{jobLevel.titleLevel,jdbcType=VARCHAR},
+            gmt_created =#{jobLevel.gmt_created,jdbcType=DATE},
+            <if test="jobLevel.gmt_modified != null">
+                gmt_modified =#{jobLevel.gmt_modified,jdbcType=DATE},
+            </if>
+            is_enabled = #{jobLevel.is_enabled,jdbcType=TINYINT},
+        </set>
+        WHERE id=#{jobLevel.id,jdbcType = BIGINT};
+    </update>
+</mapper>
