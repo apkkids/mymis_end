@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apkkids.mapper.PoliticalStatusMapper">
+    <resultMap id="ResultMap" type="com.apkkids.bean.PoliticalStatus">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="gmt_created" property="gmt_created"/>
+        <result column="gmt_modifed" property="gmt_modifed"/>
+    </resultMap>
+    <select id="getAllPolicicalStatus" resultMap="ResultMap">
+        SELECT * FROM politicalstatus_dic;
+    </select>
+    <insert id="addPoliticalStatus" parameterType="com.apkkids.bean.PoliticalStatus">
+        INSERT INTO politicalstatus_dic (name,gmt_created,gmt_modified) VALUES
+        (#{politicalStatus.name},#{politicalStatus.gmt_created},#{politicalStatus.gmt_modified});
+    </insert>
+    <!--删除多个记录的方法-->
+    <delete id="deletePoliticalStatus" parameterType="int">
+        delete from politicalstatus_dic where id in
+        <foreach collection="ids" item="idItem" open="(" separator="," close=")">
+            #{idItem}
+        </foreach>
+    </delete>
+    <update id="updatePoliticalStatus" parameterType="com.apkkids.bean.PoliticalStatus">
+        UPDATE politicalstatus_dic
+        <set>
+            name = #{politicalStatus.name,jdbcType=VARCHAR},
+            gmt_created =#{politicalStatus.gmt_created,jdbcType=DATE},
+            <if test="politicalStatus.gmt_modified != null">
+                gmt_modified =#{politicalStatus.gmt_modified,jdbcType=DATE},
+            </if>
+        </set>
+        WHERE id=#{politicalStatus.id,jdbcType = BIGINT};
+    </update>
+</mapper>

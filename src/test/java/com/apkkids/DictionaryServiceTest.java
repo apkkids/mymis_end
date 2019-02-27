@@ -2,6 +2,8 @@ package com.apkkids;
 
 import com.apkkids.bean.JobLevel;
 import com.apkkids.bean.Nation;
+import com.apkkids.bean.PoliticalStatus;
+import com.apkkids.bean.Position;
 import com.apkkids.service.DictionaryService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -118,4 +120,89 @@ public class DictionaryServiceTest {
         Assert.assertEquals(originSize,endSize);
     }
 
+    @Test
+    public void testPositionService() {
+        List<Position> positionList = service.getAllPositions();
+        int originSize = positionList.size();
+
+        if (!positionList.isEmpty()) {
+            //添加两条记录
+            Position position = positionList.get(0);
+            position.setName("test1");
+            position.setGmt_modified(new Date());
+            Long rel = service.addPosition(position);
+            System.out.println("add position, rel = " + rel);
+
+            position.setName("test2");
+            position.setGmt_modified(new Date());
+            rel = service.addPosition(position);
+            System.out.println("add position rel = " + rel);
+
+            //修改最后一条记录
+            positionList = service.getAllPositions();
+            position = positionList.get(positionList.size() - 1);
+            position.setName("testLast");
+            position.setGmt_created(new Date());
+            position.setGmt_modified(new Date());
+            System.out.println(position);
+            rel = service.updatePosition(position);
+            positionList = service.getAllPositions();
+            Position newPosition = positionList.get(positionList.size() - 1);
+            System.out.println(newPosition);
+            //查看是否修改成功
+            Assert.assertEquals(position, newPosition);
+
+            //删除最后两条记录
+            String[] ids = new String[2];
+            ids[0] = positionList.get(positionList.size() - 1).getId().toString();
+            ids[1] = positionList.get(positionList.size() - 2).getId().toString();
+            rel = service.deletePositions(ids);
+            System.out.println("delete 2 nations, rel = " + rel);
+        }
+        int endSize = service.getAllPositions().size();
+        Assert.assertEquals(originSize,endSize);
+    }
+
+    @Test
+    public void testPoliticalStatusService() {
+        List<PoliticalStatus> politicalStatusList = service.getAllPolicicalStatus();
+        int originSize = politicalStatusList.size();
+
+        if (!politicalStatusList.isEmpty()) {
+            //添加两条记录
+            PoliticalStatus politicalStatus = politicalStatusList.get(0);
+            politicalStatus.setName("test1");
+            politicalStatus.setGmt_modified(new Date());
+            Long rel = service.addPoliticalStatus(politicalStatus);
+            System.out.println("add politicalStatus, rel = " + rel);
+
+            politicalStatus.setName("test2");
+            politicalStatus.setGmt_modified(new Date());
+            rel = service.addPoliticalStatus(politicalStatus);
+            System.out.println("add politicalStatus rel = " + rel);
+
+            //修改最后一条记录
+            politicalStatusList = service.getAllPolicicalStatus();
+            politicalStatus = politicalStatusList.get(politicalStatusList.size() - 1);
+            politicalStatus.setName("testLast");
+            politicalStatus.setGmt_created(new Date());
+            politicalStatus.setGmt_modified(new Date());
+            System.out.println(politicalStatus);
+            rel = service.updatePoliticalStatus(politicalStatus);
+            politicalStatusList = service.getAllPolicicalStatus();
+            PoliticalStatus newPoliticalStatus = politicalStatusList.get(politicalStatusList.size() - 1);
+            System.out.println(newPoliticalStatus);
+            //查看是否修改成功
+            Assert.assertEquals(politicalStatus, newPoliticalStatus);
+
+            //删除最后两条记录
+            String[] ids = new String[2];
+            ids[0] = politicalStatusList.get(politicalStatusList.size() - 1).getId().toString();
+            ids[1] = politicalStatusList.get(politicalStatusList.size() - 2).getId().toString();
+            rel = service.deletePoliticalStatus(ids);
+            System.out.println("delete 2 nations, rel = " + rel);
+        }
+        int endSize = service.getAllPolicicalStatus().size();
+        Assert.assertEquals(originSize,endSize);
+    }
 }

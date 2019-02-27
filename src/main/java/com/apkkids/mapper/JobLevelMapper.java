@@ -3,6 +3,7 @@ package com.apkkids.mapper;
 import com.apkkids.bean.JobLevel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Description:
  */
 @Mapper
+@Component
 public interface JobLevelMapper {
     List<JobLevel> getAllJobLevels();
 

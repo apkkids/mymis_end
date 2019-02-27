@@ -4,6 +4,7 @@ import com.apkkids.bean.JobLevel;
 import com.apkkids.bean.Position;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 * @Date 2019/2/27 0027 下午 12:52
 */
 @Mapper
+@Component
 public interface PositionMapper {
     List<Position> getAllPositions();
 

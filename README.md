@@ -7,6 +7,10 @@
 
 2.后端架构搭建：https://zhuanlan.zhihu.com/p/55292903
 
+3.MySql数据库设计:https://zhuanlan.zhihu.com/p/55976020
+
+4.用MyBatis实现服务:https://zhuanlan.zhihu.com/p/56091891
+
 ## 内容提要
 如何运行代码：
 

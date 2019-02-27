@@ -2,9 +2,11 @@ package com.apkkids.service;
 
 import com.apkkids.bean.JobLevel;
 import com.apkkids.bean.Nation;
+import com.apkkids.bean.PoliticalStatus;
 import com.apkkids.bean.Position;
 import com.apkkids.mapper.JobLevelMapper;
 import com.apkkids.mapper.NationMapper;
+import com.apkkids.mapper.PoliticalStatusMapper;
 import com.apkkids.mapper.PositionMapper;
 import jdk.nashorn.internal.scripts.JO;
 import org.apache.ibatis.annotations.Param;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Policy;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +32,8 @@ public class DictionaryService {
     JobLevelMapper jobLevelMapper;
     @Autowired
     PositionMapper positionMapper;
+    @Autowired
+    PoliticalStatusMapper politicalStatusMapper;
 
     //Nation dictionary service
     public List<Nation> getAllNation() {
@@ -46,6 +51,7 @@ public class DictionaryService {
     }
 
     public Long updateNation(Nation nation) {
+        nation.setGmt_modified(new Date());
         return nationMapper.updateNation(nation);
     }
 
@@ -65,24 +71,46 @@ public class DictionaryService {
     }
 
     public Long updateJobLevel(JobLevel jobLevel) {
+        jobLevel.setGmt_modified(new Date());
         return jobLevelMapper.updateJobLevel(jobLevel);
     }
 
     //Position dictionary service
-    List<Position> getAllPositions() {
+    public List<Position> getAllPositions() {
         return positionMapper.getAllPositions();
     }
 
-    Long addPosition(Position position) {
+    public Long addPosition(Position position) {
         position.setGmt_created(new Date());
         return positionMapper.addPosition(position);
     }
 
-    Long deletePositions(String[] ids) {
+    public Long deletePositions(String[] ids) {
         return positionMapper.deletePositions(ids);
     }
 
-    Long updatePosition(Position position) {
+    public Long updatePosition(Position position) {
+        position.setGmt_modified(new Date());
         return positionMapper.updatePosition(position);
     }
+
+    //politicalStatus dictionary service
+    public List<PoliticalStatus> getAllPolicicalStatus() {
+        return politicalStatusMapper.getAllPolicicalStatus();
+    }
+
+    public Long addPoliticalStatus(PoliticalStatus politicalStatus) {
+        politicalStatus.setGmt_created(new Date());
+        return politicalStatusMapper.addPoliticalStatus(politicalStatus);
+    }
+
+    public Long deletePoliticalStatus(@Param("ids") String[] ids) {
+        return politicalStatusMapper.deletePoliticalStatus(ids);
+    }
+
+    public Long updatePoliticalStatus(PoliticalStatus politicalStatus) {
+        politicalStatus.setGmt_modified(new Date());
+        return politicalStatusMapper.updatePoliticalStatus(politicalStatus);
+    }
+
 }
