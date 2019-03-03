@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apkkids.mapper.RoleMapper">
+    <resultMap id="ResultMap" type="com.apkkids.bean.Role">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="name_ch" property="name_ch"/>
+        <result column="gmt_created" property="gmt_created"/>
+        <result column="gmt_modifed" property="gmt_modifed"/>
+    </resultMap>
+    <select id="getAllRoles" resultMap="ResultMap">
+        SELECT * FROM role_sys;
+    </select>
+    <select id="getRoleById" resultMap="ResultMap">
+        SELECT * FROM role_sys WHERE id=#{id};
+    </select>
+
+    <insert id="addRole" parameterType="com.apkkids.bean.Role">
+       INSERT INTO role_sys (name,name_ch,gmt_created,gmt_modified) VALUES
+        (#{role.name},#{role.name_ch},#{role.gmt_created},#{role.gmt_modified});
+    </insert>
+
+    <delete id="deleteRoles" parameterType="long">
+        DELETE FROM role_sys WHERE  id in
+        <foreach collection="ids" item="idItem" open="(" separator="," close=")">
+            #{idItem}
+        </foreach>
+    </delete>
+
+    <update id="updateRole" parameterType="com.apkkids.bean.Role">
+        UPDATE role_sys
+        <set>
+            name = #{role.name,jdbcType=VARCHAR},
+            name_ch = #{role.name_ch,jdbcType=VARCHAR},
+            gmt_created =#{role.gmt_created,jdbcType=DATE},
+            <if test="role.gmt_modified != null">
+                gmt_modified =#{role.gmt_modified,jdbcType=DATE},
+            </if>
+        </set>
+        WHERE id=#{role.id,jdbcType=BIGINT};
+    </update>
+</mapper>

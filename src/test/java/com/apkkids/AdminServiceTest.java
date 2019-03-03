@@ -36,7 +36,9 @@ public class AdminServiceTest {
             Admin admin = service.getAdminById(id);
             System.out.println("the first admin is :");
             System.out.println(admin);
-        }
 
+            admin = (Admin) service.loadUserByUsername("admin");
+            System.out.println(admin);
+        }
     }
 }

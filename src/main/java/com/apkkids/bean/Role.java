@@ -1,14 +1,17 @@
 package com.apkkids.bean;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Date;
 import java.util.List;
 
 /**
- * @Description 角色，是资源的集合，对应role_sys表
+ * @Description 角色，是资源的集合，对应role_sys表，同时它实现了GrantedAuthority接口，
+ * 成为Spring Security中的权限类，权限名就是角色的name
  * @Author alex
  * @Date 2019/1/31 0031 下午 8:54
  */
-public class Role {
+public class Role implements GrantedAuthority{
     private Long id;
     private String name;
     private String name_ch;
@@ -28,6 +31,14 @@ public class Role {
                 '}';
     }
 
+    /**
+     *
+     * @return 返回权限名，即name
+     */
+    @Override
+    public String getAuthority() {
+        return name;
+    }
     public Long getId() {
         return id;
     }

@@ -1,14 +1,19 @@
 package com.apkkids.bean;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 /**
- * @Description 管理员，拥有多个角色，对应admin_sys表
+ * @Description 管理员用户，拥有多个角色，对应admin_sys表；同时它实现了UserDetails接口，成为
+ * 参与Spring Security登录验证中的用户类
  * @Author alex
  * @Date 2019/1/31 0031 下午 8:54
  */
-public class Admin {
+public class Admin implements UserDetails {
     private Long id;
     private String username;
     private String password;
@@ -36,10 +41,38 @@ public class Admin {
                 '}';
     }
 
+    /**
+     * 获得管理员的所有角色（角色即权限），构成一个GrantedAuthority的List返回
+     * @return 一个用户权限集合List
+     */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }

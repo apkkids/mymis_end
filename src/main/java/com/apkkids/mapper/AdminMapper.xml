@@ -20,4 +20,7 @@
     <select id="getAdminById" resultMap="ResultMap">
         SELECT * FROM admin_sys WHERE id=#{id};
     </select>
+    <select id="getAdminByUsername" resultMap="ResultMap">
+        SELECT * FROM admin_sys WHERE username=#{username};
+    </select>
 </mapper>
