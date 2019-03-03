@@ -41,4 +41,8 @@
         </set>
         WHERE id=#{role.id,jdbcType=BIGINT};
     </update>
+
+    <select id="getRolesByAdminId" parameterType="long" resultMap="ResultMap">
+        SELECT r.* from role_sys r, admin_role a_r where a_r.role_id=r.id and a_r.admin_id=#{id};
+    </select>
 </mapper>

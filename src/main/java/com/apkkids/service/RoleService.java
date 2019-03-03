@@ -2,6 +2,7 @@ package com.apkkids.service;
 
 import com.apkkids.bean.Role;
 import com.apkkids.mapper.RoleMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,10 @@ public class RoleService {
     RoleMapper mapper;
     public List<Role> getAllRoles(){
         return mapper.getAllRoles();
+    }
+
+    public  List<Role> getRolesByAdminId( Long id){
+        return mapper.getRolesByAdminId(id);
     }
 
     public Role getRoleById(Long id){

@@ -1,7 +1,9 @@
 package com.apkkids;
 
 import com.apkkids.bean.Admin;
+import com.apkkids.bean.Role;
 import com.apkkids.service.AdminService;
+import com.apkkids.service.RoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ import java.util.List;
 public class AdminServiceTest {
     @Autowired
     AdminService service;
+    @Autowired
+    RoleService roleService;
     @Test
     public void contextLoads() {
     }
@@ -39,6 +43,9 @@ public class AdminServiceTest {
 
             admin = (Admin) service.loadUserByUsername("admin");
             System.out.println(admin);
+
+            List<Role> roles = roleService.getRolesByAdminId(1l);
+            System.out.println("Role list of admin:"+roles);
         }
     }
 }

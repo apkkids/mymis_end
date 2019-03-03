@@ -1,6 +1,7 @@
 package com.apkkids.mapper;
 
 import com.apkkids.bean.Admin;
+import com.apkkids.bean.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +26,6 @@ public interface AdminMapper {
      * @return 找到的管理员
      */
     Admin getAdminByUsername(@Param("username") String username) ;
-
 
     /**
      * 得到系统中所有的管理员

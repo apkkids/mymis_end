@@ -1,5 +1,8 @@
 package com.apkkids.bean;
 
+import com.apkkids.mapper.AdminMapper;
+import com.apkkids.mapper.RoleMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,6 +27,8 @@ public class Admin implements UserDetails {
     private Date gmt_created;
     private Date gmt_modified;
     private List<Role> roleList;
+    @Autowired
+    RoleMapper mapper;
 
     @Override
     public String toString() {
@@ -43,11 +48,13 @@ public class Admin implements UserDetails {
 
     /**
      * 获得管理员的所有角色（角色即权限），构成一个GrantedAuthority的List返回
+     * 这里需要额外的一次数据库查询
      * @return 一个用户权限集合List
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        roleList = mapper.getRolesByAdminId(id);
+        return roleList;
     }
 
     @Override

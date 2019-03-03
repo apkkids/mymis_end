@@ -1,6 +1,7 @@
 package com.apkkids.service;
 
 import com.apkkids.bean.Admin;
+import com.apkkids.bean.Role;
 import com.apkkids.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

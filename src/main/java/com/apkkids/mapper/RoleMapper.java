@@ -24,4 +24,11 @@ public interface RoleMapper {
     Long deleteRoles(@Param("ids") String[] ids);
 
     Long updateRole(@Param("role") Role role);
+
+    /**
+     * 得到管理员所有的角色权限
+     * @param id
+     * @return 角色列表
+     */
+    List<Role> getRolesByAdminId(@Param("id") Long id);
 }

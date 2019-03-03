@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.apkkids.mapper.AdminMapper">
     <resultMap id="ResultMap" type="com.apkkids.bean.Admin">
-        <id column="id" property="id" />
+        <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="name_ch" property="name_ch"/>
