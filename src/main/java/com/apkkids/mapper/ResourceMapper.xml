@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.apkkids.mapper.ResourceMapper">
+    <resultMap id="ResultMap" type="com.apkkids.bean.Resource">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="url" property="url"/>
+        <result column="icon_string" property="icon_string"/>
+        <result column="is_enabled" property="is_enabled" jdbcType="TINYINT"/>
+        <result column="gmt_created" property="gmt_created"/>
+        <result column="gmt_modifed" property="gmt_modifed"/>
+    </resultMap>
+    <select id="getAllResources" resultMap="ResultMap">
+        SELECT * FROM resource_sys order by id ASC ;
+    </select>
+    <select id="getResourceById" resultMap="ResultMap">
+        SELECT * FROM resource_sys WHERE id=#{id};
+    </select>
+
+    <insert id="addResource" parameterType="com.apkkids.bean.Resource">
+       INSERT INTO resource_sys (name,url,is_enabled,icon_string,gmt_created,gmt_modified) VALUES
+        (#{resource.name},#{resource.url},#{resource.is_enabled},#{resource.icon_string}
+        ,#{resource.gmt_created},#{resource.gmt_modified});
+    </insert>
+
+    <delete id="deleteResources" parameterType="long">
+        DELETE FROM resource_sys WHERE  id in
+        <foreach collection="ids" item="idItem" open="(" separator="," close=")">
+            #{idItem}
+        </foreach>
+    </delete>
+
+    <update id="updateResource" parameterType="com.apkkids.bean.Resource">
+        UPDATE resource_sys
+        <set>
+            name = #{resource.name,jdbcType=VARCHAR},
+            url = #{resource.url,jdbcType=VARCHAR},
+            is_enabled = #{resource.is_enabled,jdbcType=TINYINT},
+            icon_string = #{resource.icon_string,jdbcType=VARCHAR},
+            gmt_created =#{resource.gmt_created,jdbcType=DATE},
+            <if test="resource.gmt_modified != null">
+                gmt_modified =#{resource.gmt_modified,jdbcType=DATE},
+            </if>
+        </set>
+        WHERE id=#{resource.id,jdbcType=BIGINT};
+    </update>
+</mapper>

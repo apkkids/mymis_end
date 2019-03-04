@@ -14,7 +14,7 @@ public class Resource {
     private String name;
     private String url;
     private boolean is_enabled;
-    private String ico_string;
+    private String icon_string;
     private Date gmt_created;
     private Date gmt_modified;
 
@@ -25,7 +25,7 @@ public class Resource {
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", is_enabled=" + is_enabled +
-                ", ico_string='" + ico_string + '\'' +
+                ", ico_string='" + icon_string + '\'' +
                 ", gmt_created=" + gmt_created +
                 ", gmt_modified=" + gmt_modified +
                 '}';
@@ -63,12 +63,12 @@ public class Resource {
         this.is_enabled = is_enabled;
     }
 
-    public String getIco_string() {
-        return ico_string;
+    public String getIcon_string() {
+        return icon_string;
     }
 
-    public void setIco_string(String ico_string) {
-        this.ico_string = ico_string;
+    public void setIcon_string(String icon_string) {
+        this.icon_string = icon_string;
     }
 
     public Date getGmt_created() {
