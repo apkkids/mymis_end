@@ -2,6 +2,7 @@ package com.apkkids.bean;
 
 import com.apkkids.mapper.AdminMapper;
 import com.apkkids.mapper.RoleMapper;
+import com.apkkids.utils.DaoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,8 +28,6 @@ public class Admin implements UserDetails {
     private Date gmt_created;
     private Date gmt_modified;
     private List<Role> roleList;
-    @Autowired
-    RoleMapper mapper;
 
     @Override
     public String toString() {
@@ -53,7 +52,7 @@ public class Admin implements UserDetails {
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        roleList = mapper.getRolesByAdminId(id);
+        roleList = DaoUtils.getInstance().getRoleMapper().getRolesByAdminId(id);
         return roleList;
     }
 

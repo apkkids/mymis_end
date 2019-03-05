@@ -61,10 +61,10 @@ CREATE TABLE `admin_sys`  (
 -- ----------------------------
 -- Records of admin_sys
 -- ----------------------------
-INSERT INTO `admin_sys` VALUES (1, 'admin', '$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统管理员', '010-1122334', '北京', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:44:53', NULL);
-INSERT INTO `admin_sys` VALUES (2, 'test1', '$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统测试员1', '010-1100334', '上海', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
-INSERT INTO `admin_sys` VALUES (3, 'test2', '$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统测试员2', '010-1122334', '广州', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
-INSERT INTO `admin_sys` VALUES (4, 'developer', '$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '开发主管', '010-3344556', '深圳', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
+INSERT INTO `admin_sys` VALUES (1, 'admin', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统管理员', '010-1122334', '北京', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:44:53', NULL);
+INSERT INTO `admin_sys` VALUES (2, 'test1', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统测试员1', '010-1100334', '上海', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
+INSERT INTO `admin_sys` VALUES (3, 'test2', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统测试员2', '010-1122334', '广州', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
+INSERT INTO `admin_sys` VALUES (4, 'developer', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '开发主管', '010-3344556', '深圳', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
 
 -- ----------------------------
 -- Table structure for employee
