@@ -11,9 +11,26 @@
         <result column="is_enabled" property="is_enabled" jdbcType="TINYINT"/>
         <result column="gmt_created" property="gmt_created"/>
         <result column="gmt_modifed" property="gmt_modifed"/>
+        <!--集合属性roles-->
+        <collection property="roles" ofType="com.apkkids.bean.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rname_ch" property="name_ch"/>
+        </collection>
     </resultMap>
+    <!--这个选择语句将roles属性也设置好了-->
     <select id="getAllResources" resultMap="ResultMap">
-        SELECT * FROM resource_sys order by id ASC ;
+SELECT
+	re.*,
+	r.id AS rid,
+	r.name AS rname,
+	r.name_ch AS rnamezh
+FROM
+	resource_sys	re
+	LEFT JOIN role_resource rr ON rr.resource_id = re.id
+	LEFT JOIN role_sys r ON rr.role_id = r.id
+ORDER BY
+	re.id ASC
     </select>
     <select id="getResourceById" resultMap="ResultMap">
         SELECT * FROM resource_sys WHERE id=#{id};

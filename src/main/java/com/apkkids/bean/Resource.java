@@ -3,6 +3,7 @@ package com.apkkids.bean;/**
  */
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Description 资源，代表系统中对资源的访问权限，对应resource_sys表
@@ -18,6 +19,17 @@ public class Resource {
     private Date gmt_created;
     private Date gmt_modified;
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    //访问改资源所需要的角色列表，它在MyBatis中利用二次查询得到
+    private List<Role> roles;
+
     @Override
     public String toString() {
         return "Resource{" +
@@ -25,9 +37,10 @@ public class Resource {
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", is_enabled=" + is_enabled +
-                ", ico_string='" + icon_string + '\'' +
+                ", icon_string='" + icon_string + '\'' +
                 ", gmt_created=" + gmt_created +
                 ", gmt_modified=" + gmt_modified +
+                ", roles=" + roles +
                 '}';
     }
 
