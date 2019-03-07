@@ -66,7 +66,8 @@ public class MainWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 //配置访问被拒绝后的处理
                 .and().exceptionHandling().accessDeniedHandler(myAccessDeniedHandler)
                 //配置登录入口
-                .and().formLogin().loginPage("/login_p").loginProcessingUrl("/login").permitAll()
+//                .and().formLogin().loginPage("/login_p").loginProcessingUrl("/login").permitAll()
+                .and().formLogin().permitAll()
                 //配置登出入口
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll()
                 .and().csrf().disable();

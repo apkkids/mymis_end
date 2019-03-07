@@ -11,7 +11,7 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 29/01/2019 20:08:06
+ Date: 07/03/2019 21:05:09
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `admin_role`  (
   INDEX `fk2`(`role_id`) USING BTREE,
   CONSTRAINT `fk1` FOREIGN KEY (`admin_id`) REFERENCES `admin_sys` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk2` FOREIGN KEY (`role_id`) REFERENCES `role_sys` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '管理员-角色关联表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '管理员-角色关联表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of admin_role
@@ -39,6 +39,8 @@ CREATE TABLE `admin_role`  (
 INSERT INTO `admin_role` VALUES (1, 1, 1, '2019-01-17 11:39:46');
 INSERT INTO `admin_role` VALUES (2, 1, 3, '2019-01-17 11:39:57');
 INSERT INTO `admin_role` VALUES (3, 2, 4, '2019-01-29 19:33:30');
+INSERT INTO `admin_role` VALUES (4, 2, 3, '2019-03-07 20:53:35');
+INSERT INTO `admin_role` VALUES (5, 3, 4, '2019-03-07 20:53:52');
 
 -- ----------------------------
 -- Table structure for admin_sys
@@ -61,10 +63,10 @@ CREATE TABLE `admin_sys`  (
 -- ----------------------------
 -- Records of admin_sys
 -- ----------------------------
-INSERT INTO `admin_sys` VALUES (1, 'admin', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统管理员', '010-1122334', '北京', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:44:53', NULL);
-INSERT INTO `admin_sys` VALUES (2, 'test1', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统测试员1', '010-1100334', '上海', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
-INSERT INTO `admin_sys` VALUES (3, 'test2', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '系统测试员2', '010-1122334', '广州', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
-INSERT INTO `admin_sys` VALUES (4, 'developer', '$2a$10$9SIFu8l8asZUKxtwqrJM5ujhWarz/PMnTX44wXNsBHfpJMakWw3M6', '开发主管', '010-3344556', '深圳', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
+INSERT INTO `admin_sys` VALUES (1, 'admin', '$2a$10$hvYRxeRfJRG1hp2NP9tc/.BublYUy.2sGNLTn3.lNyNFFpgKxZP62', '系统管理员', '010-1122334', '北京', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:44:53', NULL);
+INSERT INTO `admin_sys` VALUES (2, 'test1', '$2a$10$hvYRxeRfJRG1hp2NP9tc/.BublYUy.2sGNLTn3.lNyNFFpgKxZP62', '系统测试员1', '010-1100334', '上海', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
+INSERT INTO `admin_sys` VALUES (3, 'test2', '$2a$10$hvYRxeRfJRG1hp2NP9tc/.BublYUy.2sGNLTn3.lNyNFFpgKxZP62', '系统测试员2', '010-1122334', '广州', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
+INSERT INTO `admin_sys` VALUES (4, 'developer', '$2a$10$hvYRxeRfJRG1hp2NP9tc/.BublYUy.2sGNLTn3.lNyNFFpgKxZP62', '开发主管', '010-3344556', '深圳', 1, 'http://bpic.588ku.com/element_pic/01/40/00/64573ce2edc0728.jpg', '2019-01-15 10:47:39', NULL);
 
 -- ----------------------------
 -- Table structure for employee
@@ -124,7 +126,7 @@ CREATE TABLE `joblevel_dic`  (
   `gmt_modified` datetime(0) NULL DEFAULT NULL,
   `is_enabled` tinyint(1) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表，职级' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表，职级' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of joblevel_dic
@@ -143,7 +145,7 @@ CREATE TABLE `nation_dic`  (
   `gmt_created` datetime(0) NOT NULL,
   `gmt_modified` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 77 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of nation_dic
@@ -242,7 +244,7 @@ CREATE TABLE `politicalstatus_dic`  (
   `gmt_created` datetime(0) NOT NULL,
   `gmt_modified` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表，政治面貌\r\n' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表，政治面貌\r\n' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of politicalstatus_dic
@@ -250,6 +252,8 @@ CREATE TABLE `politicalstatus_dic`  (
 INSERT INTO `politicalstatus_dic` VALUES (1, '中共党员', '2019-01-16 20:35:00', NULL);
 INSERT INTO `politicalstatus_dic` VALUES (2, '共青团员', '2019-01-29 18:57:55', NULL);
 INSERT INTO `politicalstatus_dic` VALUES (3, '群众', '2019-01-29 18:58:11', NULL);
+INSERT INTO `politicalstatus_dic` VALUES (4, 'test1', '2019-02-27 03:22:48', '2019-02-27 03:22:48');
+INSERT INTO `politicalstatus_dic` VALUES (5, 'test2', '2019-02-27 03:22:48', '2019-02-27 03:22:48');
 
 -- ----------------------------
 -- Table structure for position_dic
@@ -261,7 +265,7 @@ CREATE TABLE `position_dic`  (
   `gmt_created` datetime(0) NOT NULL,
   `gmt_modified` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表，职位\r\n' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典表，职位\r\n' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of position_dic
@@ -290,7 +294,7 @@ CREATE TABLE `resource_sys`  (
   `gmt_created` datetime(0) NOT NULL COMMENT '资源的创建时间',
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '资源的修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of resource_sys
@@ -300,6 +304,9 @@ INSERT INTO `resource_sys` VALUES (2, '角色资源', '/sys/role', 1, NULL, '201
 INSERT INTO `resource_sys` VALUES (3, '员工资源', '/data/employee', 1, NULL, '2019-01-29 19:31:28', NULL);
 INSERT INTO `resource_sys` VALUES (4, '组织资源', '/data/orgnization', 1, NULL, '2019-01-29 19:31:51', NULL);
 INSERT INTO `resource_sys` VALUES (5, '工资资源', '/data/salary', 1, NULL, '2019-01-29 19:32:14', NULL);
+INSERT INTO `resource_sys` VALUES (20, '测试admin', '/test/admin', 1, NULL, '2019-03-07 20:54:21', NULL);
+INSERT INTO `resource_sys` VALUES (21, '测试manager', '/test/manager', 1, NULL, '2019-03-07 20:54:42', NULL);
+INSERT INTO `resource_sys` VALUES (22, '测试personnel', '/test/personnel', 1, NULL, '2019-03-07 20:55:04', NULL);
 
 -- ----------------------------
 -- Table structure for role_resource
@@ -315,7 +322,7 @@ CREATE TABLE `role_resource`  (
   INDEX `resource_id_fk`(`resource_id`) USING BTREE,
   CONSTRAINT `resource_id_fk` FOREIGN KEY (`resource_id`) REFERENCES `resource_sys` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `role_sys` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of role_resource
@@ -324,6 +331,11 @@ INSERT INTO `role_resource` VALUES (1, 1, 1, '2019-01-29 19:32:34');
 INSERT INTO `role_resource` VALUES (2, 3, 2, '2019-01-29 19:32:45');
 INSERT INTO `role_resource` VALUES (3, 4, 3, '2019-01-29 19:32:56');
 INSERT INTO `role_resource` VALUES (4, 4, 4, '2019-01-29 19:33:08');
+INSERT INTO `role_resource` VALUES (5, 1, 2, '2019-03-06 22:05:52');
+INSERT INTO `role_resource` VALUES (6, 1, 3, '2019-03-06 22:06:01');
+INSERT INTO `role_resource` VALUES (7, 1, 20, '2019-03-07 20:55:58');
+INSERT INTO `role_resource` VALUES (8, 3, 21, '2019-03-07 20:56:12');
+INSERT INTO `role_resource` VALUES (9, 4, 22, '2019-03-07 20:56:20');
 
 -- ----------------------------
 -- Table structure for role_sys
@@ -336,7 +348,7 @@ CREATE TABLE `role_sys`  (
   `gmt_created` datetime(0) NOT NULL COMMENT '角色创建时间',
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '角色修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表存储了系统中的角色，角色是权限的一种表示方法，它代表了一组系统权限，拥有某个角色的管理员可以访问（获修改）某些资源。\r\n它和菜单表menu、管理员表admin联合起来完成系统的权限控制。' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表存储了系统中的角色，角色是权限的一种表示方法，它代表了一组系统权限，拥有某个角色的管理员可以访问（获修改）某些资源。\r\n它和菜单表menu、管理员表admin联合起来完成系统的权限控制。' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of role_sys
